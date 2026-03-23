@@ -12,7 +12,7 @@ import {
 import { TbCube } from "react-icons/tb";
 
 // URL Sound Effect Keyboard Mekanik (Bisa diganti dengan path lokal seperti "/sounds/keyboard-click.mp3" nantinya)
-const KEYBOARD_CLICK_SOUND = "https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3";
+const KEYBOARD_CLICK_SOUND = "https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3";
 
 const playClickSound = () => {
   const audio = new Audio(KEYBOARD_CLICK_SOUND);
@@ -112,9 +112,9 @@ const KeyCap = ({
         <meshStandardMaterial color={hovered ? "#ffffff" : skill.color} roughness={0.2} metalness={0.1} />
         
         {/* Tambahkan div flex untuk memastikan ikon presisi di tengah */}
-        <Html transform position={[0, 0.26, 0]} rotation={[-Math.PI / 2, 0, 0]} pointerEvents="none" zIndexRange={[1, 0]}>
+        <Html transform center position={[0.30, 0.26, -0.20]} rotation={[-Math.PI / 2, 0, 0]} pointerEvents="none" zIndexRange={[1, 0]}>
           <div className="flex items-center justify-center w-[30px] h-[30px]">
-            <skill.Icon size={30} color={iconColor} />
+            <skill.Icon size={27} color={iconColor} />
           </div>
         </Html>
 
