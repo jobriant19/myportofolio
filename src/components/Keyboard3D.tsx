@@ -112,7 +112,7 @@ const KeyCap = ({
         <Html 
           transform 
           center 
-          position={[0.20, 0.255, 0]} 
+          position={[0.20, 0.10, 0]} 
           rotation={[-Math.PI / 2, 0, 0]} 
           pointerEvents="none" 
           zIndexRange={[1, 0]}

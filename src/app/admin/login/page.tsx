@@ -9,22 +9,24 @@ import { motion } from "framer-motion";
 // --- Komponen Ikon Menggunakan Gambar dari Folder Public ---
 const FloatingIcons = () => {
   const icons = [
-    // Pastikan nama file di .src sesuai dengan nama file di folder public/skills/ Anda
-    // Anda bisa mengubah ekstensi .png menjadi .svg atau .jpg jika file Anda berbeda format
-    { id: 1, x: "18%", delay: 0, duration: 25, boxSize: "w-[85px] h-[85px]", imgSize: "w-12 h-12", src: "/skills/laravel.png" },
-    { id: 2, x: "75%", delay: 3, duration: 22, boxSize: "w-[75px] h-[75px]", imgSize: "w-10 h-10", src: "/skills/vue.png" },
-    { id: 3, x: "28%", delay: 8, duration: 28, boxSize: "w-[95px] h-[95px]", imgSize: "w-14 h-14", src: "/skills/next.png" },
-    { id: 4, x: "65%", delay: 1, duration: 24, boxSize: "w-[80px] h-[80px]", imgSize: "w-11 h-11", src: "/skills/livewire.png" },
-    { id: 5, x: "45%", delay: 6, duration: 26, boxSize: "w-[70px] h-[70px]", imgSize: "w-10 h-10", src: "/skills/flutter.png" },
-    { id: 6, x: "12%", delay: 12, duration: 20, boxSize: "w-[80px] h-[80px]", imgSize: "w-12 h-12", src: "/skills/go.png" },
-    { id: 7, x: "85%", delay: 5, duration: 23, boxSize: "w-[85px] h-[85px]", imgSize: "w-12 h-12", src: "/skills/typescript.png" },
-    { id: 8, x: "72%", delay: 14, duration: 27, boxSize: "w-[75px] h-[75px]", imgSize: "w-10 h-10", src: "/skills/js.png" },
-    { id: 9, x: "32%", delay: 10, duration: 22, boxSize: "w-[90px] h-[90px]", imgSize: "w-14 h-14", src: "/skills/react.png" },
-    { id: 10, x: "42%", delay: 2, duration: 29, boxSize: "w-[85px] h-[85px]", imgSize: "w-12 h-12", src: "/skills/python.png" },
-    { id: 11, x: "35%", delay: 16, duration: 25, boxSize: "w-[75px] h-[75px]", imgSize: "w-10 h-10", src: "/skills/git.png" },
+    // AREA KIRI
+    { id: 1, x: "8%", delay: 0, duration: 12, boxSize: "w-[85px] h-[85px]", imgSize: "w-12 h-12", src: "/skills/laravel.png" },
+    { id: 3, x: "22%", delay: 8, duration: 14, boxSize: "w-[95px] h-[95px]", imgSize: "w-14 h-14", src: "/skills/next.png" },
+    { id: 5, x: "4%", delay: 6, duration: 13, boxSize: "w-[70px] h-[70px]", imgSize: "w-10 h-10", src: "/skills/flutter.png" },
+    { id: 6, x: "16%", delay: 12, duration: 10, boxSize: "w-[80px] h-[80px]", imgSize: "w-12 h-12", src: "/skills/go.png" },
+    { id: 9, x: "26%", delay: 10, duration: 11, boxSize: "w-[90px] h-[90px]", imgSize: "w-14 h-14", src: "/skills/react.png" },
+    { id: 11, x: "12%", delay: 16, duration: 12, boxSize: "w-[75px] h-[75px]", imgSize: "w-10 h-10", src: "/skills/git.png" },
+    
+    // AREA KANAN
+    { id: 2, x: "85%", delay: 3, duration: 10, boxSize: "w-[75px] h-[75px]", imgSize: "w-10 h-10", src: "/skills/vue.png" },
+    { id: 4, x: "74%", delay: 1, duration: 11, boxSize: "w-[80px] h-[80px]", imgSize: "w-11 h-11", src: "/skills/livewire.png" },
+    { id: 7, x: "92%", delay: 5, duration: 12, boxSize: "w-[85px] h-[85px]", imgSize: "w-12 h-12", src: "/skills/typescript.png" },
+    { id: 8, x: "78%", delay: 14, duration: 13, boxSize: "w-[75px] h-[75px]", imgSize: "w-10 h-10", src: "/skills/js.png" },
+    { id: 10, x: "88%", delay: 2, duration: 15, boxSize: "w-[85px] h-[85px]", imgSize: "w-12 h-12", src: "/skills/python.png" },
   ];
 
   return (
+    // Dihapus hidden lg:block agar animasi tetap berjalan di Mobile (lewat belakang form)
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {icons.map((icon) => (
         <motion.div
@@ -39,7 +41,6 @@ const FloatingIcons = () => {
             ease: "linear",
           }}
         >
-          {/* Memanggil gambar dari folder menggunakan tag img */}
           <img 
             src={icon.src} 
             alt={`skill-${icon.id}`} 
@@ -85,18 +86,19 @@ export default function AdminLogin() {
 
       <Link 
         href="/" 
-        className="absolute top-8 left-8 flex items-center gap-2 px-5 py-2.5 bg-white/90 backdrop-blur-md border border-gray-200 rounded-full shadow-sm text-sm font-bold text-gray-600 hover:text-emerald-600 hover:border-emerald-300 hover:shadow-md transition-all z-50"
+        className="absolute top-6 left-5 sm:top-8 sm:left-8 flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 bg-white/90 backdrop-blur-md border border-gray-200 rounded-full shadow-sm text-xs sm:text-sm font-bold text-gray-600 hover:text-emerald-600 hover:border-emerald-300 hover:shadow-md transition-all z-50"
       >
-        <ArrowLeft size={18} /> Kembali ke Landing Page
+        <ArrowLeft size={18} /> Kembali
       </Link>
 
-      <div className="bg-white/95 backdrop-blur-2xl p-10 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100 w-full max-w-md relative z-10">
+      {/* Form Card z-10 memastikan form ada di depan animasi ikon */}
+      <div className="bg-white/95 backdrop-blur-2xl p-8 sm:p-10 mx-5 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100 w-full max-w-md relative z-10">
         <div className="text-center mb-8">
           <div className="bg-gray-900 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-5 shadow-lg shadow-gray-900/20">
-            JS
+            JOSI
           </div>
-          <h2 className="text-3xl font-black text-gray-900 tracking-tight">Command Center</h2>
-          <p className="text-gray-500 text-sm mt-2 font-medium">Masuk untuk mengatur konten portofolio</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">Command Center</h2>
+          <p className="text-gray-500 text-xs sm:text-sm mt-2 font-medium">Masuk untuk mengatur konten portofolio</p>
         </div>
 
         {errorMsg && (
@@ -105,7 +107,7 @@ export default function AdminLogin() {
           </div>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-5 sm:space-y-6">
           <div>
             <label className="text-sm font-bold text-gray-700 block mb-2.5">Email Admin</label>
             <input 
@@ -129,9 +131,9 @@ export default function AdminLogin() {
           <button 
             type="submit" 
             disabled={loading} 
-            className="w-full bg-emerald-500 text-white font-bold py-4 rounded-2xl hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/30 active:scale-[0.98] disabled:opacity-70 disabled:active:scale-100 mt-2 text-lg flex items-center justify-center gap-2"
+            className="w-full bg-emerald-500 text-white font-bold py-4 rounded-2xl hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/30 active:scale-[0.98] disabled:opacity-70 disabled:active:scale-100 mt-2 text-base sm:text-lg flex items-center justify-center gap-2"
           >
-            {loading ? <><Loader2 className="animate-spin" size={20} /> Memverifikasi...</> : "Akses Dashboard"}
+            {loading ? <><Loader2 className="animate-spin" size={20} /> Memverifikasi...</> : "Login Dashboard"}
           </button>
         </form>
       </div>
