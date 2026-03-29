@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="flex flex-wrap gap-3 mt-2">
             {[ 
               { icon: Facebook, bg: "bg-white", text: "text-blue-600" },
-              { icon: Terminal, bg: "bg-white", text: "text-black" }, // Threads
+              { icon: Terminal, bg: "bg-white", text: "text-black" }, // Telegram
               { icon: Instagram, bg: "bg-white", text: "text-pink-600" },
               { icon: Twitter, bg: "bg-white", text: "text-blue-400" },
               { icon: Send, bg: "bg-white", text: "text-blue-500" }, // Telegram

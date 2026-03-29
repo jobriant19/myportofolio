@@ -11,13 +11,11 @@ import {
 } from "react-icons/si";
 import { TbCube } from "react-icons/tb";
 
-// URL Sound Effect Keyboard Mekanik (Bisa diganti dengan path lokal seperti "/sounds/keyboard-click.mp3" nantinya)
 const KEYBOARD_CLICK_SOUND = "https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3";
 
 const playClickSound = () => {
   const audio = new Audio(KEYBOARD_CLICK_SOUND);
-  audio.volume = 0.6; // Mengatur volume suara (0.0 sampai 1.0)
-  // Memutar audio dan menangani error jika browser memblokir autoplay sebelum user berinteraksi
+  audio.volume = 0.9;
   audio.play().catch((err) => console.log("Audio play failed:", err));
 };
 
@@ -67,7 +65,6 @@ const KeyCap = ({
   const [clicked, setClicked] = useState(false);
   const baseRef = useRef<THREE.Mesh>(null);
   
-  // Menggunakan state global agar hanya 1 tombol yang hover dalam satu waktu
   const hovered = activeKey === skill.name;
 
   useFrame(() => {
@@ -91,7 +88,7 @@ const KeyCap = ({
         radius={0.1}
         smoothness={4}
         onPointerOver={(e) => {
-          e.stopPropagation(); // Mencegah klik bocor ke tombol lain
+          e.stopPropagation(); 
           setActiveKey(skill.name);
         }}
         onPointerOut={(e) => { 
@@ -102,7 +99,7 @@ const KeyCap = ({
         onPointerDown={(e) => {
           e.stopPropagation();
           setClicked(true);
-          playClickSound(); // Memanggil efek suara saat tombol ditekan
+          playClickSound(); 
         }}
         onPointerUp={(e) => {
           e.stopPropagation();
@@ -111,14 +108,29 @@ const KeyCap = ({
       >
         <meshStandardMaterial color={hovered ? "#ffffff" : skill.color} roughness={0.2} metalness={0.1} />
         
-        {/* Tambahkan div flex untuk memastikan ikon presisi di tengah */}
-        <Html transform center position={[0.30, 0.26, -0.20]} rotation={[-Math.PI / 2, 0, 0]} pointerEvents="none" zIndexRange={[1, 0]}>
-          <div className="flex items-center justify-center w-[30px] h-[30px]">
-            <skill.Icon size={27} color={iconColor} />
+        {/* PERBAIKAN: Gunakan `center` kembali, Y di 0.255 (pas di atas box), dan fixed width/height di CSS */}
+        <Html 
+          transform 
+          center 
+          position={[0.20, 0.255, 0]} 
+          rotation={[-Math.PI / 2, 0, 0]} 
+          pointerEvents="none" 
+          zIndexRange={[1, 0]}
+        >
+          <div style={{
+            width: "40px",
+            height: "40px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 0,
+            padding: 0
+          }}>
+            <skill.Icon size={23} color={iconColor} style={{ display: "block" }} />
           </div>
         </Html>
 
-        {/* Z-index ditingkatkan & posisi Y di naikkan agar tidak tertimpa logo dari baris depan */}
+        {/* Tooltip Hover */}
         {(hovered || clicked) && (
           <Html position={[0, 1.8, 0]} center zIndexRange={[9999, 8000]}>
             <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl shadow-2xl flex items-center gap-3 w-max border-2 border-green-400 animate-bounce cursor-default relative z-[9999]">
@@ -138,7 +150,6 @@ const KeyCap = ({
 };
 
 export default function Keyboard3D() {
-  // State global untuk melacak tombol mana yang sedang disorot
   const [activeKey, setActiveKey] = useState<string | null>(null);
 
   return (
